@@ -214,15 +214,15 @@ function setupGeneralIpcHandlers() {
     });
 
     ipcMain.handle('get-api-url', () => {
-        return process.env.pickleglass_API_URL || 'http://localhost:9001';
+        return process.env.copiloto_API_URL || 'http://localhost:9001';
     });
 
     ipcMain.handle('get-web-url', () => {
-        return process.env.pickleglass_WEB_URL || 'http://localhost:3000';
+        return process.env.copiloto_WEB_URL || 'http://localhost:3000';
     });
 
     ipcMain.on('get-api-url-sync', (event) => {
-        event.returnValue = process.env.pickleglass_API_URL || 'http://localhost:9001';
+        event.returnValue = process.env.copiloto_API_URL || 'http://localhost:9001';
     });
 
     ipcMain.handle('get-database-status', async () => {
@@ -254,6 +254,17 @@ function setupGeneralIpcHandlers() {
         }
     });
 
+    ipcMain.handle("generate-radiology-report", async (_e, { transcript, apiKey }) => {
+        const { generateRadiologyReport, pasteText } = require("./features/radiology/reportGenerator");
+        try {
+            const report = await generateRadiologyReport(transcript, apiKey);
+            pasteText(report);
+            return { success: true, report };
+        } catch (error) {
+            console.error("Failed to generate radiology report:", error);
+            return { success: false, error: error.message };
+        }
+    });
 }
 
 async function handleCustomUrl(url) {
@@ -311,7 +322,7 @@ async function handleFirebaseAuthCallback(params) {
     console.log('[Auth] Received ID token from deep link, exchanging for custom token...');
 
     try {
-        const functionUrl = 'https://us-west1-pickle-3651a.cloudfunctions.net/pickleGlassAuthCallback';
+        const functionUrl = 'https://us-west1-pickle-3651a.cloudfunctions.net/copilotoAuthCallback';
         const response = await fetch(functionUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -451,14 +462,14 @@ async function startWebStack() {
 
   console.log(`🔧 Allocated ports: API=${apiPort}, Frontend=${frontendPort}`);
 
-  process.env.pickleglass_API_PORT = apiPort.toString();
-  process.env.pickleglass_API_URL = `http://localhost:${apiPort}`;
-  process.env.pickleglass_WEB_PORT = frontendPort.toString();
-  process.env.pickleglass_WEB_URL = `http://localhost:${frontendPort}`;
+  process.env.copiloto_API_PORT = apiPort.toString();
+  process.env.copiloto_API_URL = `http://localhost:${apiPort}`;
+  process.env.copiloto_WEB_PORT = frontendPort.toString();
+  process.env.copiloto_WEB_URL = `http://localhost:${frontendPort}`;
 
   console.log(`🌍 Environment variables set:`, {
-    pickleglass_API_URL: process.env.pickleglass_API_URL,
-    pickleglass_WEB_URL: process.env.pickleglass_WEB_URL
+    copiloto_API_URL: process.env.copiloto_API_URL,
+    copiloto_WEB_URL: process.env.copiloto_WEB_URL
   });
 
   const createBackendApp = require('../pickleglass_web/backend_node');
@@ -581,7 +592,7 @@ function initAutoUpdater() {
                 type: 'info',
                 buttons: ['Install now', 'Install on next launch'],
                 title: 'Update Available',
-                message: 'A new version of Glass is ready to be installed.',
+                message: 'Uma nova versão do Copiloto está pronta para ser instalada.',
                 defaultId: 0,
                 cancelId: 1
             };

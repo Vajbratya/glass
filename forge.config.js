@@ -8,13 +8,13 @@ module.exports = {
             unpack: '**/*.node,**/*.dylib,' + '**/node_modules/{sharp,@img}/**/*',
         },
         extraResource: ['./src/assets/SystemAudioDump', './pickleglass_web/out'],
-        name: 'Glass',
+        name: 'Copiloto - por Laudos.ai',
         icon: 'src/assets/logo',
-        appBundleId: 'com.pickle.glass',
+        appBundleId: 'com.laudos.copiloto',
         arch: 'universal',
         protocols: [
             {
-                name: 'PickleGlass Protocol',
+                name: 'Copiloto Protocol',
                 schemes: ['pickleglass'],
             },
         ],
@@ -44,9 +44,9 @@ module.exports = {
         {
             name: '@electron-forge/maker-squirrel',
             config: {
-                name: 'pickle-glass',
-                productName: 'Glass',
-                shortcutName: 'Glass',
+                name: 'copiloto',
+                productName: 'Copiloto - por Laudos.ai',
+                shortcutName: 'Copiloto',
                 createDesktopShortcut: true,
                 createStartMenuShortcut: true,
             },

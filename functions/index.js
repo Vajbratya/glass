@@ -23,7 +23,7 @@ admin.initializeApp();
 // });
 
 /**
- * @name pickleGlassAuthCallback
+ * @name copilotoAuthCallback
  * @description
  * Validate Firebase ID token and return custom token.
  * On success, return success response with user information.
@@ -35,7 +35,7 @@ admin.initializeApp();
 const authCallbackHandler = (request, response) => {
   cors(request, response, async () => {
     try {
-      logger.info("pickleGlassAuthCallback function triggered", {
+      logger.info("copilotoAuthCallback function triggered", {
         body: request.body,
       });
 
@@ -83,7 +83,7 @@ const authCallbackHandler = (request, response) => {
   });
 };
 
-exports.pickleGlassAuthCallback = onRequest(
+exports.copilotoAuthCallback = onRequest(
     {region: "us-west1"},
     authCallbackHandler,
 );

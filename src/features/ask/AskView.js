@@ -1125,7 +1125,7 @@ export class AskView extends LitElement {
         this.requestUpdate();
         this.renderContent();
 
-        window.pickleGlass.sendMessage(question).catch(error => {
+        window.copiloto.sendMessage(question).catch(error => {
             console.error('Error processing assistant question:', error);
             this.isLoading = false;
             this.isStreaming = false;
@@ -1221,7 +1221,7 @@ export class AskView extends LitElement {
         this.requestUpdate();
         this.renderContent();
 
-        window.pickleGlass.sendMessage(text).catch(error => {
+        window.copiloto.sendMessage(text).catch(error => {
             console.error('Error sending text:', error);
             this.isLoading = false;
             this.isStreaming = false;

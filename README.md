@@ -1,30 +1,30 @@
 <p align="center">
-  <a href="https://pickle.com/glass">
+  <a href="https://laudos.ai">
    <img src="./public/assets/banner.gif" alt="Logo">
   </a>
 
-  <h1 align="center">Glass by Pickle: Digital Mind Extension 🧠</h1>
+  <h1 align="center">Copiloto - por Laudos.ai: Extensão da Mente Digital 🧠</h1>
 
 </p>
 
 
 <p align="center">
-  <a href="https://discord.gg/UCZH5B5Hpd"><img src="./public/assets/button_dc.png" width="80" alt="Pickle Discord"></a>&ensp;<a href="https://pickle.com"><img src="./public/assets/button_we.png" width="105" alt="Pickle Website"></a>&ensp;<a href="https://x.com/intent/user?screen_name=leinadpark"><img src="./public/assets/button_xe.png" width="109" alt="Follow Daniel"></a>
+  <a href="https://discord.gg/UCZH5B5Hpd"><img src="./public/assets/button_dc.png" width="80" alt="Pickle Discord"></a>&ensp;<a href="https://laudos.ai"><img src="./public/assets/button_we.png" width="105" alt="Pickle Website"></a>&ensp;<a href="https://x.com/intent/user?screen_name=leinadpark"><img src="./public/assets/button_xe.png" width="109" alt="Follow Daniel"></a>
 </p>
 
 > This project is a fork of [CheatingDaddy](https://github.com/sohzm/cheating-daddy) with modifications and enhancements. Thanks to [Soham](https://x.com/soham_btw) and all the open-source contributors who made this possible!
 
-🤖 **Fast, light & open-source**—Glass lives on your desktop, sees what you see, listens in real time, understands your context, and turns every moment into structured knowledge.
+🤖 **Rápido, leve e de código aberto**—Copiloto está na sua área de trabalho, vê o que você vê, escuta em tempo real, entende seu contexto e transforma cada momento em conhecimento estruturado.
 
-💬 **Proactive in meetings**—it surfaces action items, summaries, and answers the instant you need them.
+💬 **Proativo em reuniões**—apresenta ações, resumos e respostas no instante em que você precisa.
 
-🫥️ **Truly invisible**—never shows up in screen recordings, screenshots, or your dock; no always-on capture or hidden sharing.
+🫥️ **Realmente invisível**—nunca aparece em gravações de tela, capturas ou no dock; sem captura constante ou compartilhamento oculto.
 
 To have fun building with us, join our [Discord](https://discord.gg/UCZH5B5Hpd)!
 
 ## Instant Launch
 
-⚡️  Skip the setup—launch instantly with our ready-to-run macOS app.  [[Download Here]](https://www.dropbox.com/scl/fi/znid09apxiwtwvxer6oc9/Glass_latest.dmg?rlkey=gwvvyb3bizkl25frhs4k1zwds&st=37q31b4w&dl=1)
+⚡️  Pule a configuração—execute imediatamente com nosso app macOS pronto para uso.  [[Baixar aqui]](https://www.dropbox.com/scl/fi/znid09apxiwtwvxer6oc9/copiloto.dmg?rlkey=gwvvyb3bizkl25frhs4k1zwds&st=37q31b4w&dl=1)
 
 ## Quick Start (Local Build)
 
@@ -68,7 +68,7 @@ npm run setup
 
 You can visit [here](https://platform.openai.com/api-keys) to get your OpenAI API Key.
 
-### Liquid Glass Design (coming soon)
+### Design do Copiloto (em breve)
 
 <img width="100%" alt="booking-screen" src="./public/assets/03.gif">
 
@@ -100,14 +100,14 @@ We love contributions! Feel free to open issues for bugs or feature requests.
 | 🚧 WIP     | Code Refactoring               | Refactoring the entire codebase for better maintainability. |
 | 🚧 WIP      | Firebase Data Storage Issue    | Session & ask should be saved in firebase for signup users |
 | 🚧 WIP      | Login Issue                    | Currently breaking when switching between local and sign-in mode |
-| 🚧 WIP      | Liquid Glass                    | Liquid Glass UI for MacOS 26 |
-| 🚧 WIP      | Permission Issue           | Mic & system audio & display capture permission sometimes not working|
+| 🚧 WIP      | Design Copiloto                    | UI do Copiloto para MacOS 26 |
+| 🚧 WIP      | Design Copiloto                    | UI do Copiloto para MacOS 26 |
 
 
 
 ## About Pickle
 
-**Our mission is to build a living digital clone for everyone.** Glass is part of Step 1—a trusted pipeline that transforms your daily data into a scalable clone. Visit [pickle.com](https://pickle.com) to learn more.
+**Nossa missão é construir um clone digital vivo para todos.** Copiloto é parte do Passo 1—um pipeline confiável que transforma seus dados diários em um clone escalável. Visite [laudos.ai](https://laudos.ai) para saber mais.
 
 ## Star History
-[![Star History Chart](https://api.star-history.com/svg?repos=pickle-com/glass&type=Date)](https://www.star-history.com/#pickle-com/glass&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=laudos-ai/copiloto&type=Date)](https://www.star-history.com/#laudos-ai/copiloto&Date)

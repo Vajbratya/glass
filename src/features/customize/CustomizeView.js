@@ -552,7 +552,7 @@ export class CustomizeView extends LitElement {
     }
 
     getDefaultKeybinds() {
-        const isMac = window.pickleGlass?.isMacOS || navigator.platform.includes('Mac');
+        const isMac = window.copiloto?.isMacOS || navigator.platform.includes('Mac');
         return {
             moveUp: isMac ? 'Cmd+Up' : 'Ctrl+Up',
             moveDown: isMac ? 'Cmd+Down' : 'Ctrl+Down',
@@ -896,7 +896,7 @@ export class CustomizeView extends LitElement {
             <div class="settings-container">
                 <div class="header-section">
                     <div>
-                        <h1 class="app-title">Pickle Glass</h1>
+                        <h1 class="app-title">Copiloto - por Laudos.ai</h1>
                         <div class="account-info">
                             ${this.firebaseUser
                                 ? html`Account: ${this.firebaseUser.email || 'Logged In'}`
