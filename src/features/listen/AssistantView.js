@@ -1075,10 +1075,10 @@ export class AssistantView extends LitElement {
         const displayText = this.isHovering
             ? this.viewMode === 'transcript'
                 ? 'Copy Transcript'
-                : 'Copy Glass Analysis'
+                : 'Copiar Análise'
             : this.viewMode === 'insights'
             ? `Live insights`
-            : `Glass is Listening ${this.elapsedTime}`;
+            : `Copiloto ouvindo ${this.elapsedTime}`;
 
         const data = this.structuredData || {
             summary: [],

@@ -920,12 +920,12 @@ function toggleAllWindowsVisibility() {
 
 function ensureDataDirectories() {
     const homeDir = os.homedir();
-    const pickleGlassDir = path.join(homeDir, '.pickle-glass');
-    const dataDir = path.join(pickleGlassDir, 'data');
+    const copilotoDir = path.join(homeDir, '.pickle-glass');
+    const dataDir = path.join(copilotoDir, 'data');
     const imageDir = path.join(dataDir, 'image');
     const audioDir = path.join(dataDir, 'audio');
 
-    [pickleGlassDir, dataDir, imageDir, audioDir].forEach(dir => {
+    [copilotoDir, dataDir, imageDir, audioDir].forEach(dir => {
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }
@@ -1046,17 +1046,17 @@ function createWindows() {
                     const hasResponse = await askWindow.webContents.executeJavaScript(`
                         (() => {
                             try {
-                                // PickleGlassApp의 Shadow DOM 내부로 접근
-                                const pickleApp = document.querySelector('pickle-glass-app');
+                                // CopilotoApp의 Shadow DOM 내부로 접근
+                                const pickleApp = document.querySelector('copiloto-app');
                                 if (!pickleApp || !pickleApp.shadowRoot) {
-                                    console.log('PickleGlassApp not found');
+                                    console.log('CopilotoApp not found');
                                     return false;
                                 }
                                 
-                                // PickleGlassApp의 shadowRoot 내부에서 ask-view 찾기
+                                // CopilotoApp의 shadowRoot 내부에서 ask-view 찾기
                                 const askView = pickleApp.shadowRoot.querySelector('ask-view');
                                 if (!askView) {
-                                    console.log('AskView not found in PickleGlassApp shadow DOM');
+                                    console.log('AskView not found in CopilotoApp shadow DOM');
                                     return false;
                                 }
                                 

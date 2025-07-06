@@ -37,7 +37,7 @@ let lastScreenshotBase64 = null; // Store the latest screenshot
 let realtimeConversationHistory = [];
 
 const PICKLE_GLASS_SYSTEM_PROMPT = `<core_identity>
-You are Pickle-Glass, developed and created by Pickle-Glass, and you are the user's live-meeting co-pilot.
+You are Copiloto, developed by Laudos.ai, and you are the user's live-meeting co-pilot.
 </core_identity>
 
 <objective>
@@ -345,7 +345,7 @@ let aecProcessor = new SimpleAEC();
 const isLinux = process.platform === 'linux';
 const isMacOS = process.platform === 'darwin';
 
-window.pickleGlass = window.pickleGlass || {};
+window.copiloto = window.copiloto || {};
 
 let tokenTracker = {
     tokens: [],
@@ -428,7 +428,7 @@ setInterval(() => {
     tokenTracker.trackAudioTokens();
 }, 2000);
 
-function pickleGlassElement() {
+function copilotoElement() {
     return document.getElementById('pickle-glass');
 }
 
@@ -463,14 +463,14 @@ async function initializeopenai(profile = 'interview', language = 'en') {
             console.log('OpenAI initialization successful.');
         } else {
             console.error('OpenAI initialization failed.');
-            const appElement = pickleGlassElement();
+            const appElement = copilotoElement();
             if (appElement && typeof appElement.setStatus === 'function') {
                 appElement.setStatus('Initialization Failed');
             }
         }
     } catch (error) {
         console.error('Error during OpenAI initialization IPC call:', error);
-        const appElement = pickleGlassElement();
+        const appElement = copilotoElement();
         if (appElement && typeof appElement.setStatus === 'function') {
             appElement.setStatus('Error');
         }
@@ -495,7 +495,7 @@ ipcRenderer.on('system-audio-data', (event, { data }) => {
 // Listen for status updates
 ipcRenderer.on('update-status', (event, status) => {
     console.log('Status update:', status);
-    pickleGlass.e().setStatus(status);
+    copiloto.e().setStatus(status);
 });
 
 // Listen for real-time STT updates
@@ -521,8 +521,8 @@ ipcRenderer.on('stt-update', (event, data) => {
         console.log(`📋 Latest text: ${conversationText}`);
     }
 
-    if (pickleGlass.e() && typeof pickleGlass.e().updateRealtimeTranscription === 'function') {
-        pickleGlass.e().updateRealtimeTranscription({
+    if (copiloto.e() && typeof copiloto.e().updateRealtimeTranscription === 'function') {
+        copiloto.e().updateRealtimeTranscription({
             speaker,
             text,
             isFinal,
@@ -535,17 +535,17 @@ ipcRenderer.on('stt-update', (event, data) => {
 
 ipcRenderer.on('update-structured-data', (_, structuredData) => {
     console.log('📥 Received structured data update:', structuredData);
-    window.pickleGlass.structuredData = structuredData;
-    window.pickleGlass.setStructuredData(structuredData);
+    window.copiloto.structuredData = structuredData;
+    window.copiloto.setStructuredData(structuredData);
 });
-window.pickleGlass.structuredData = {
+window.copiloto.structuredData = {
     summary: [],
     topic: { header: '', bullets: [] },
     actions: [],
 };
-window.pickleGlass.setStructuredData = data => {
-    window.pickleGlass.structuredData = data;
-    pickleGlass.e()?.updateStructuredData?.(data);
+window.copiloto.setStructuredData = data => {
+    window.copiloto.structuredData = data;
+    copiloto.e()?.updateStructuredData?.(data);
 };
 
 async function startCapture(screenshotIntervalSeconds = 5, imageQuality = 'medium') {
@@ -674,7 +674,7 @@ async function startCapture(screenshotIntervalSeconds = 5, imageQuality = 'mediu
         }
     } catch (err) {
         console.error('Error starting capture:', err);
-        pickleGlass.e().setStatus('error');
+        copiloto.e().setStatus('error');
     }
 }
 
@@ -1122,7 +1122,7 @@ async function getAllConversationSessions() {
 // Initialize conversation storage when renderer loads
 initConversationStorage().catch(console.error);
 
-window.pickleGlass = {
+window.copiloto = {
     initializeopenai,
     startCapture,
     stopCapture,
@@ -1133,7 +1133,7 @@ window.pickleGlass = {
     initConversationStorage,
     isLinux: isLinux,
     isMacOS: isMacOS,
-    e: pickleGlassElement,
+    e: copilotoElement,
 };
 
 // -------------------------------------------------------
@@ -1157,6 +1157,6 @@ ipcRenderer.on('session-state-changed', (_event, { isActive }) => {
             actions: [],
             followUps: [],
         };
-        window.pickleGlass.setStructuredData(blankData);
+        window.copiloto.setStructuredData(blankData);
     }
 });

@@ -2,7 +2,7 @@
   "functions": [
     {
       "source": "functions",
-      "codebase": "pickle-glass",
+      "codebase": "copiloto",
       "ignore": [
         "node_modules",
         ".git",

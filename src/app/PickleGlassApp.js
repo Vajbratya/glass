@@ -6,7 +6,7 @@ import { AskView } from '../features/ask/AskView.js';
 
 import '../features/listen/renderer.js';
 
-export class PickleGlassApp extends LitElement {
+export class CopilotoApp extends LitElement {
     static styles = css`
         :host {
             display: block;
@@ -68,7 +68,7 @@ export class PickleGlassApp extends LitElement {
         this.outlines = [];
         this.analysisRequests = [];
 
-        window.pickleGlass.setStructuredData = data => {
+        window.copiloto.setStructuredData = data => {
             this.updateStructuredData(data);
         };
     }
@@ -165,9 +165,9 @@ export class PickleGlassApp extends LitElement {
             }
         }
 
-        if (window.pickleGlass) {
-            await window.pickleGlass.initializeopenai(this.selectedProfile, this.selectedLanguage);
-            window.pickleGlass.startCapture(this.selectedScreenshotInterval, this.selectedImageQuality);
+        if (window.copiloto) {
+            await window.copiloto.initializeopenai(this.selectedProfile, this.selectedLanguage);
+            window.copiloto.startCapture(this.selectedScreenshotInterval, this.selectedImageQuality);
         }
 
         // 🔄 Clear previous summary/analysis when a new listening session begins
@@ -215,8 +215,8 @@ export class PickleGlassApp extends LitElement {
     }
 
     async handleSendText(message) {
-        if (window.pickleGlass) {
-            const result = await window.pickleGlass.sendTextMessage(message);
+        if (window.copiloto) {
+            const result = await window.copiloto.sendTextMessage(message);
 
             if (!result.success) {
                 console.error('Failed to send message:', result.error);
@@ -228,19 +228,19 @@ export class PickleGlassApp extends LitElement {
     }
 
     // updateOutline(outline) {
-    //     console.log('📝 PickleGlassApp updateOutline:', outline);
+    //     console.log('📝 CopilotoApp updateOutline:', outline);
     //     this.outlines = [...outline];
     //     this.requestUpdate();
     // }
 
     // updateAnalysisRequests(requests) {
-    //     console.log('📝 PickleGlassApp updateAnalysisRequests:', requests);
+    //     console.log('📝 CopilotoApp updateAnalysisRequests:', requests);
     //     this.analysisRequests = [...requests];
     //     this.requestUpdate();
     // }
 
     updateStructuredData(data) {
-        console.log('📝 PickleGlassApp updateStructuredData:', data);
+        console.log('📝 CopilotoApp updateStructuredData:', data);
         this.structuredData = data;
         this.requestUpdate();
         
@@ -292,4 +292,4 @@ export class PickleGlassApp extends LitElement {
     }
 }
 
-customElements.define('pickle-glass-app', PickleGlassApp);
+customElements.define('copiloto-app', CopilotoApp);

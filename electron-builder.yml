@@ -1,16 +1,16 @@
 # electron-builder.yml
 
 # The unique application ID
-appId: com.pickle.glass
+appId: com.laudos.copiloto
 
 # The user-facing application name
-productName: Glass
+productName: "Copiloto - por Laudos.ai"
 
 # Publish configuration for GitHub releases
 publish:
     provider: github
     owner: pickle-com
-    repo: glass
+    repo: copiloto
     releaseType: draft
 
 # List of files to be included in the app package
